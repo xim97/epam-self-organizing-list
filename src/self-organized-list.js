@@ -13,7 +13,7 @@ class SelfOrganizedList {
     }
 
     insert(data) {
-
+dfadsf
     }
 
     size() {
