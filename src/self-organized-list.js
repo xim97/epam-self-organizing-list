@@ -93,41 +93,36 @@ class SelfOrganizedList {
 
 	moveToFront(node) {
 		if (node === this.head){
-			node.prev = node.next = null;
-			this.head = this.tail = node;
+			node.prev = null;
+			this.head = node;
 		}
 		else {
 			if (node === this.tail){
 				this.tail = this.tail.prev;
 				this.tail.next = null;
-
-				this.head.prev = node;
+				
 				node.next = this.head;
 				node.prev = null;
+				this.head.prev = node;
 				this.head = node;
 			} else {
 				node.prev.next = node.next;
 				node.next.prev = node.prev;
-
-				this.head.prev = node;
+				
 				node.next = this.head;
 				node.prev = null;
+				this.head.prev = node;
 				this.head = node;
 
 			}
 		}
 	}
 
-	reorganize(data) {
-		/*console.log("a");
-		this.moveToFront(this.findNode(data));
-		console.log("aa");
-		return !!this.findNode(data);
-		console.log("aaa");*/
+	reorganize(data) {		
 		var node = this.findNode(data);
 		if (node === null){
 			return false;
-		} else {
+		} else {			
 			this.moveToFront(node);
 			return true;
 		}
